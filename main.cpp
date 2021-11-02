@@ -93,7 +93,7 @@ int main()
 			char username[256];
 
 			//retrieves username from column 1 
-			while (SQLFetch(sql_stmt_handle)== SQL_SUCCESS) {
+			while (SQLFetch(sql_stmt_handle) == SQL_SUCCESS) {
 				SQLGetData(sql_stmt_handle, 1, SQL_C_DEFAULT, &username, sizeof(username), NULL);
 				cout << username << endl;
 			}
@@ -194,5 +194,6 @@ COMPLETED:
 	SQLFreeHandle(SQL_HANDLE_ENV, sql_env_handle); 
 	*/
 
+	getchar();
 	return 0;
 }
