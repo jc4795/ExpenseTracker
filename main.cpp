@@ -22,7 +22,7 @@ void showSQLError(unsigned int handleType, const SQLHANDLE& handle) {
 
 int main()
 {
-	
+	/*
 	SQLHANDLE sql_conn_handle = NULL; //connnection handle
 	SQLHANDLE sql_stmt_handle = NULL; //statement handle
 	SQLHANDLE sql_env_handle = NULL;  //environment handle
@@ -108,9 +108,9 @@ int main()
 	SQLDisconnect(sql_conn_handle);
 	SQLFreeHandle(SQL_HANDLE_DBC, sql_conn_handle);
 	SQLFreeHandle(SQL_HANDLE_ENV, sql_env_handle);
-	
+	*/
 
-	/*
+	
 	//testing sql server connection and handles
 #define SQL_RESULT_LEN 240
 #define SQL_RETURN_CODE_LEN 1000
@@ -192,7 +192,7 @@ COMPLETED:
 	SQLDisconnect(sql_conn_handle);
 	SQLFreeHandle(SQL_HANDLE_DBC, sql_conn_handle);
 	SQLFreeHandle(SQL_HANDLE_ENV, sql_env_handle); 
-	*/
+	
 
 	getchar();
 	return 0;
