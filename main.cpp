@@ -1,4 +1,3 @@
-/*central hub for project*/
 
 #include <iostream>
 #include <windows.h>
@@ -8,7 +7,7 @@
 
 using namespace std;
 
-
+/*
 //trying sql connection with simpler function
 //this function diagnoses handles and prints errors
 void showSQLError(unsigned int handleType, const SQLHANDLE& handle) {
@@ -18,7 +17,7 @@ void showSQLError(unsigned int handleType, const SQLHANDLE& handle) {
 	if (SQL_SUCCESS == SQLGetDiagRec(handleType, handle, 1, SQLState, NULL, message, 1024, NULL))
 		cout << "SQL driver message: " << message << "\nSQL State: " << SQLState << endl;
 }
-
+*/
 
 int main()
 {
@@ -110,7 +109,7 @@ int main()
 	SQLFreeHandle(SQL_HANDLE_ENV, sql_env_handle);
 	*/
 
-	
+	/*
 	//testing sql server connection and handles
 #define SQL_RESULT_LEN 240
 #define SQL_RETURN_CODE_LEN 1000
@@ -196,4 +195,5 @@ COMPLETED:
 
 	getchar();
 	return 0;
+	*/
 }

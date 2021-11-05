@@ -19,11 +19,16 @@ namespace ExpenseTracker {
 		MyForm(void)
 		{
 			
-			SqlConnection^ con = gcnew  SqlConnection("Data Source=72.180.160.215,1433;Initial Catalog=expTrackerApp;Persist Security Info=True;User ID=3340project;Password=***********");
+			//SqlConnection^ con = gcnew  SqlConnection("Data Source=72.180.160.215,1433;Initial Catalog=expTrackerApp;Persist Security Info=True;User ID=3340project;Password=***********");
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
+
+			//asteriks will display in password textfield instead of actual password for security reasons
+			textBox1->PasswordChar = '*';
+			textBox1->MaxLength = 20; //max pw length is 20 chars
+		
 		}
 
 	protected:
@@ -81,6 +86,7 @@ namespace ExpenseTracker {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 1;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -88,6 +94,7 @@ namespace ExpenseTracker {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 20);
 			this->textBox2->TabIndex = 2;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox2_TextChanged);
 			// 
 			// label1
 			// 
@@ -127,16 +134,17 @@ namespace ExpenseTracker {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		con.Open();
-		SqlCommand cmd = gcnew SqlCommand("SELECT * FROM app_user WHERE user_name='" + textBox1::Text + "' AND user_password='" + textBox2::Text + "'", con);
-		SqlDataReader rd = cmd::ExecuteReader();
-		if (rd.HasRows) {
+		SqlConnection^ con = gcnew  SqlConnection("Data Source=72.180.160.215,1433;Initial Catalog=expTrackerApp;Persist Security Info=True;User ID=3340project;Password=***********");
+		con->Open();
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT * FROM app_user WHERE user_name='" + textBox1->Text + "' AND user_password='" + textBox2->Text + "'", con);
+		SqlDataReader^ rd = cmd->ExecuteReader();
+		if (rd->HasRows) {
 			MessageBox::Show("Connected to Database");
-			con.Close();
+			con->Close();
 		}
 		else {
 			MessageBox::Show("Error. Connection Faild");
-			con.Close();
+			con->Close();
 		}
 
 
@@ -146,5 +154,10 @@ namespace ExpenseTracker {
 	}
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
